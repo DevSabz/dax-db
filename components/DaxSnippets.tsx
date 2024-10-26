@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { createClient } from '@supabase/supabase-js'
-import { Linkedin, Heart, Code } from "lucide-react"
+import { Linkedin, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SidebarComponent } from "./sidebar"
 import { SnippetListComponent } from "./snippet-list"
@@ -48,7 +48,7 @@ export default function DAXSnippets() {
   )
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-gray-100">
       <SidebarComponent
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -58,21 +58,17 @@ export default function DAXSnippets() {
         setSelectedSubcategory={setSelectedSubcategory}
       />
       <div className="flex flex-col flex-1 overflow-hidden">
-
-
-        {/* Main content */}
-        <div className="flex flex-1 overflow-hidden">
+        <main className="flex flex-1 overflow-hidden">
           <SnippetListComponent
             snippets={filteredSnippets}
             selectedSnippet={selectedSnippet?.id}
             setSelectedSnippet={handleSnippetSelect}
           />
           <SnippetDetailsComponent snippet={selectedSnippet} />
-        </div>
+        </main>
 
-        {/* Footer */}
-        <footer className="bg-gray-100 py-2 px-4 flex justify-between items-center text-sm text-gray-600">
-          <span> © 2024 | Built by: Sabastian Chetty</span>
+        <footer className="bg-white py-2 px-4 flex justify-between items-center text-sm text-gray-600 border-t">
+          <span>© 2024 | Built by: Sabastian Chetty</span>
           <div className="flex items-center space-x-4">
             <a href="https://www.linkedin.com/in/sabastian-chetty" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
               <Linkedin className="h-5 w-5" />

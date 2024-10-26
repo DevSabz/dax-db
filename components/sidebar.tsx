@@ -77,60 +77,61 @@ export function SidebarComponent({
   }
 
   return (
-    <div className="w-64 bg-gray-100 p-4 overflow-auto flex flex-col">
+    <div className="w-64 bg-white overflow-hidden flex flex-col border-r">
       {/* Header */}
-      <header className="text-gray-800 mb-4 flex items-left justify-left">
-        <Code className="h-8 w-8 mr-2 animate-pulse text-blue-600" />
-        <h1 className="text-2xl font-bold tracking-tight">DAX Snippets</h1>
+      <header className="text-gray-800 p-4 flex items-center border-b">
+        <Code className="h-5 w-5 mr-2 text-blue-600" />
+        <h1 className="text-xl font-bold">Dax Snippets</h1>
       </header>
 
-      <Input
-        type="text"
-        placeholder="Search DAX snippets..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-4"
-      />
-      <h2 className="text-xl font-bold mb-4">Categories</h2>
       <ScrollArea className="flex-grow">
-        <Button
-          variant={selectedCategory === "All" ? "default" : "ghost"}
-          className="w-full justify-start mb-2"
-          onClick={() => {
-            setSelectedCategory("All")
-            setSelectedSubcategory("All")
-          }}
-        >
-          All Categories
-        </Button>
-        {categories.map((category) => (
-          <Collapsible key={category.name} className="mb-2">
-            <CollapsibleTrigger asChild>
-              <Button
-                variant={selectedCategory === category.name ? "default" : "ghost"}
-                className="w-full justify-between"
-              >
-                {category.name}
-                <Plus className="h-4 w-4" />
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="ml-4 mt-2">
-              {category.subcategory.map((subcategory) => (
+        <div className="p-4 space-y-4">
+          <Input
+            type="text"
+            placeholder="Search DAX snippets..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <h2 className="text-xl font-bold">Categories</h2>
+          <Button
+            variant={selectedCategory === "All" ? "default" : "ghost"}
+            className="w-full justify-start mb-2"
+            onClick={() => {
+              setSelectedCategory("All")
+              setSelectedSubcategory("All")
+            }}
+          >
+            All Categories
+          </Button>
+          {categories.map((category) => (
+            <Collapsible key={category.name} className="mb-2">
+              <CollapsibleTrigger asChild>
                 <Button
-                  key={subcategory}
-                  variant={selectedSubcategory === subcategory ? "default" : "ghost"}
-                  className="w-full justify-start mb-1 text-sm"
-                  onClick={() => {
-                    setSelectedCategory(category.name)
-                    setSelectedSubcategory(subcategory)
-                  }}
+                  variant={selectedCategory === category.name ? "default" : "ghost"}
+                  className="w-full justify-between"
                 >
-                  {subcategory}
+                  {category.name}
+                  <Plus className="h-4 w-4" />
                 </Button>
-              ))}
-            </CollapsibleContent>
-          </Collapsible>
-        ))}
+              </CollapsibleTrigger>
+              <CollapsibleContent className="ml-4 mt-2">
+                {category.subcategory.map((subcategory) => (
+                  <Button
+                    key={subcategory}
+                    variant={selectedSubcategory === subcategory ? "default" : "ghost"}
+                    className="w-full justify-start mb-1 text-sm"
+                    onClick={() => {
+                      setSelectedCategory(category.name)
+                      setSelectedSubcategory(subcategory)
+                    }}
+                  >
+                    {subcategory}
+                  </Button>
+                ))}
+              </CollapsibleContent>
+            </Collapsible>
+          ))}
+        </div>
       </ScrollArea>
     </div>
   )

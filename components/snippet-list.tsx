@@ -21,9 +21,12 @@ interface SnippetListProps {
 
 export function SnippetListComponent({ snippets, selectedSnippet, setSelectedSnippet }: SnippetListProps) {
   return (
-    <div className="flex-1 p-4 overflow-hidden relative">
-      <ScrollArea className="h-[calc(100vh-8rem)]">
-        <div className="space-y-4 pb-16">
+    <div className="flex-1 bg-white overflow-hidden flex flex-col border-r">
+      <header className="text-gray-800 p-4 flex items-center border-b">
+        <h2 className="text-xl font-bold">&nbsp;</h2>
+      </header>
+      <ScrollArea className="flex-grow">
+        <div className="p-4 space-y-4">
           {snippets.map((snippet) => (
             <SnippetCardComponent
               key={snippet.id}
@@ -40,7 +43,6 @@ export function SnippetListComponent({ snippets, selectedSnippet, setSelectedSni
           ))}
         </div>
       </ScrollArea>
-      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
     </div>
   )
 }
