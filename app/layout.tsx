@@ -14,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "daxDB",
+  title: "Dax Snippets",
   description: "Snippets For Dax",
 };
 

@@ -1,4 +1,4 @@
-import { DaxSnippets } from "@/components/dax-snippets";
+import DaxSnippets from "@/components/DaxSnippets";
 
 export default function Home() {
   return (
